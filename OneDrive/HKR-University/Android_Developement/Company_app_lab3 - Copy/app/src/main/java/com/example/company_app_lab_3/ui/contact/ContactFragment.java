@@ -76,8 +76,9 @@ public class ContactFragment extends Fragment {
     }
 
     public void sendEmail(){
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setData(Uri.parse("mailto:ak.axtra.one@gmail.com")); 
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:"));
+        //intent.setType("message/rfc822");
         if(intent.resolveActivity(getActivity().getPackageManager()) != null) {
             startActivity(intent);
         }
