@@ -24,8 +24,10 @@ public class ContactFragment extends Fragment {
     private ContactViewModel contactViewModel;
     private ImageButton phoneNumButton;
     private ImageButton emailButton;
+    private ImageButton urlButton;
     private TextView phNumTextView;
     private TextView emailTextView;
+    private TextView urlText;
     private static final int REQUEST_CALL = 1;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -34,6 +36,9 @@ public class ContactFragment extends Fragment {
         phoneNumButton = root.findViewById(R.id.phoneImageButton);
         phNumTextView = root.findViewById(R.id.phNumTextView);
         emailButton = root.findViewById(R.id.emailImageButton);
+        emailTextView = root.findViewById(R.id.emailTextView);
+        urlButton = root.findViewById(R.id.linkImageButton);
+        urlText = root.findViewById(R.id.linekdInTextView);
 
         phoneNumButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +52,13 @@ public class ContactFragment extends Fragment {
                 sendEmail();
             }
         });
+        urlButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openUrl();
+            }
+        });
+
         return root;
     }
 
@@ -76,14 +88,23 @@ public class ContactFragment extends Fragment {
     }
 
     public void sendEmail(){
-        Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("mailto:"));
-        //intent.setType("message/rfc822");
+        String [] addresses = new String[1];
+        addresses[0] = (String)emailTextView.getText();
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        //intent.setData(Uri.parse("mailto:"));
+        intent.setType("message/rfc822");
+        intent.putExtra(Intent.EXTRA_EMAIL, addresses);
         if(intent.resolveActivity(getActivity().getPackageManager()) != null) {
             startActivity(intent);
         }
         else {
             Toast.makeText(getContext(), "Email unavailable", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void openUrl(){
+        String url = (String)urlText.getText();
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(intent);
     }
 }

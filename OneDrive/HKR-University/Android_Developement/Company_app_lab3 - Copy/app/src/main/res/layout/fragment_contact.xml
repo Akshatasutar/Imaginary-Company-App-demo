@@ -8,7 +8,7 @@
     tools:context=".ui.contact.ContactFragment">
 
     <TextView
-        android:id="@+id/text_contact"
+        android:id="@+id/emailTextView"
         android:layout_width="213dp"
         android:layout_height="30dp"
         android:layout_marginTop="8dp"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toBottomOf="@+id/emailImageButton" />
 
     <TextView
-        android:id="@+id/text_contact3"
+        android:id="@+id/linekdInTextView"
         android:layout_width="289dp"
         android:layout_height="56dp"
         android:layout_marginTop="8dp"
@@ -33,7 +33,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.535"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
+        app:layout_constraintTop_toBottomOf="@+id/linkImageButton" />
 
     <ImageButton
         android:id="@+id/emailImageButton"
@@ -56,10 +56,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_contact" />
+        app:layout_constraintTop_toBottomOf="@+id/emailTextView" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/linkImageButton"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginTop="32dp"
